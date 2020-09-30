@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blub
+spec:
+  clusterIP: None
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: blub
+  labels:
+    app: blub
+spec:
+  replicas: 2
+  updateStrategy:
+    type: OnDelete
+    # rollingUpdate:
+    #   partition: 2
+  serviceName: blub
+  selector:
+    matchLabels:
+      app: blub-new
+  template:
+    metadata:
+      labels:
+        app: blub-new
+    spec:
+      terminationGracePeriodSeconds: 1
+      containers:
+        - name: blub
+          # image: artifactory.oebb.at/docker-group-oebb/debian
+          image: debian
+          args:
+            - bash
+            - -c
+            - sleep 10005
