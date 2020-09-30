@@ -22,11 +22,11 @@ spec:
   serviceName: blub
   selector:
     matchLabels:
-      app: blub-new
+      app: blub-new2
   template:
     metadata:
       labels:
-        app: blub-new
+        app: blub-new2
     spec:
       terminationGracePeriodSeconds: 1
       containers:
