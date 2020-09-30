@@ -10,9 +10,7 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: blub
-  labels:
-    app: blub
+  name: blubi
 spec:
   replicas: 2
   updateStrategy:
